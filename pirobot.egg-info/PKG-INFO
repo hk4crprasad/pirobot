@@ -1,3 +1,27 @@
+Metadata-Version: 2.1
+Name: pirobot
+Version: 0.1.0
+Summary: Telegram User Script with Flood Control Functionality
+Home-page: https://github.com/hk4crprasad/pirobot
+Author: HK4CRPRASAD
+License: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Communications :: Chat
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: telethon
+
 # 🕵️‍♂️ Telethon Flood Control Bot
 
 ![HK4CRPRASAD](https://raw.githubusercontent.com/hk4crprasad/ph/master/HK4CRPRASAD_free-file.png)
