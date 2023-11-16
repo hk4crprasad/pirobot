@@ -1,4 +1,3 @@
-# setup.py
 from setuptools import setup, find_packages
 
 with open('README.md', 'r', encoding='utf-8') as readme_file:
@@ -10,7 +9,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'telethon',
-        # Add other dependencies as needed
+        'requests',
     ],
     entry_points={
         'console_scripts': [
