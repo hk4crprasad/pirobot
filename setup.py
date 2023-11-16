@@ -1,3 +1,4 @@
+# setup.py
 from setuptools import setup, find_packages
 
 with open('README.md', 'r', encoding='utf-8') as readme_file:
@@ -5,8 +6,8 @@ with open('README.md', 'r', encoding='utf-8') as readme_file:
 
 setup(
     name='pirobot',
-    version='0.1.0',
-    packages=find_packages(where='.', exclude=['tests*']),
+    version='1.3.0',
+    packages=find_packages(),
     install_requires=[
         'telethon',
         # Add other dependencies as needed
@@ -17,7 +18,7 @@ setup(
         ],
     },
     author='HK4CRPRASAD',
-    description='Telegram User Script with Flood Control Functionality',
+    description='Telegram Bot Script with Flood Control Functionality',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/hk4crprasad/pirobot',
