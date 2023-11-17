@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as readme_file:
 
 setup(
     name='pirobot',
-    version='1.5.0',
+    version='1.6.0',
     packages=find_packages(),
     install_requires=[
         'telethon',
@@ -16,7 +16,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pirobot = pirobot.main:main',
+            'pirobot = pirobot.main:run_bot',
         ],
     },
     author='HK4CRPRASAD',
