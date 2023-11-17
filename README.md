@@ -1,45 +1,61 @@
-# 🕵️‍♂️ Telethon Flood Control Bot
+# pirobot 🤖
 
-![HK4CRPRASAD](https://raw.githubusercontent.com/hk4crprasad/ph/master/HK4CRPRASAD_free-file.png)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hk4crprasad/pirobot/blob/main/LICENSE.txt)
+[![GitHub release](https://img.shields.io/github/release/hk4crprasad/pirobot.svg)](https://GitHub.com/hk4crprasad/pirobot/releases/)
+[![Chat on Telegram](https://img.shields.io/badge/Chat%20on-Telegram-blue.svg?logo=telegram)](https://t.me/hk4crprasad)
 
-This Python script unleashes the power of Telethon to create a Telegram bot with robust flood control. 🚧 It monitors incoming messages, executes swift actions, and plays the game by its own rules.
+Telegram Auto Reply Bot When Offline 📱
 
-## 🚀 Features
+## Installation
 
-- **Flood Control:** Monitors messages, strikes back when they exceed limits.
-- **Muting and Blocking:** Sends a silent message, plays the waiting game, and then unleashes the block hammer.
-- **Non-blocking List:** Certain VIPs get a free pass. 🌟
+🚀 Install pirobot using [pip](https://pip.pypa.io/en/stable/):
 
-## ⚙️ Prerequisites
+```bash
+pip install pirobot
+```
 
-- Python 3
-- Telethon library
-- Telegram API credentials (api_id and api_hash)
+📝 Make sure you have Python 3 installed.
 
-## 🛠️ Setup
+## Usage
 
-1. Install the required Python packages:
+1. 🚀 After installation, run the bot:
 
-   ```bash
-   pip install telethon requests
-   ```
+    ```bash
+    pirobot -r
+    ```
 
-2. Configure your Telegram API credentials at runtime
+2. 🤖 The bot will prompt you for your API credentials and debug mode on the first run.
 
-3. Run the script:
+3. ✔️ Subsequent runs will use the existing configuration stored in `configs.json`.
 
-   ```bash
-   pip install pirobot
-   pirobot
-   ```
+## Features
 
-## ⚡ Configuration
+- 📬 Sends auto-reply messages when the user is offline.
+- 🎮 Optional guessing game feature.
 
-- Tweak the `max_flood_attempts` to unleash the chaos upon flooders.
-- Add user IDs to `excluded_channel_ids` and create your VIP list.
+## Configuration
 
-## 🎩 Author
+- 🛠️ Configuration details are stored in `configs.json`.
+- 🚫 To reset configuration, delete `configs.json` and run the bot again.
 
-This masterpiece was crafted by [HK4CRPRASAD](https://github.com/HK4CRPRASAD). Feel free to contribute or report issues.
+## Extra Resources
 
-**Note:** Navigate the digital realm responsibly, and be sure to decrypt the Telethon documentation before deploying this script.
+- 📖 Explore the [Wiki](https://github.com/hk4crprasad/pirobot/wiki) for in-depth documentation.
+- 🐞 Found a bug? Report it on [GitHub Issues](https://github.com/hk4crprasad/pirobot/issues).
+
+## Contribution
+
+🤝 Contributions are welcome! Feel free to submit issues or pull requests.
+
+## Stay Connected
+
+- 📣 Follow on [Twitter](https://twitter.com/hk4crprasad) for updates.
+- 💬 Join the discussion on [Telegram](https://t.me/hk4crprasad).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
+
+---
+
+Made with ❤️ by [HKCRPRASAD](https://github.com/hk4crprasad)
