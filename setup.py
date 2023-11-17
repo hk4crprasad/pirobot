@@ -1,12 +1,14 @@
-# setup.py
 from setuptools import setup, find_packages
-
+import os
 with open('README.md', 'r', encoding='utf-8') as readme_file:
     long_description = readme_file.read()
 
+with open(os.path.join("pirobot", ".version"), "r", encoding="utf8") as fh:
+    version = fh.read().strip()
+    
 setup(
     name='pirobot',
-    version='1.6.0',
+    version=version,
     packages=find_packages(),
     install_requires=[
         'telethon',
@@ -25,10 +27,9 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/hk4crprasad/pirobot',
-    download_url="https://github.com/TheSpeedX/TBomb/archive/pypi.zip",
-        keywords=['android', 'flood', 'helppiro', 'pirobotrun',
-                  'message_auto', 'piro', 'termux', 'pirobot', 'bottg'],
-    license='GPL',
+    download_url="https://github.com/hk4crprasad/pirobot/archive/pypi.zip",
+    keywords=['telegram', 'bot', 'pirobot', 'flood', 'auto-reply', 'telethon'],
+    license='GPL-3.0',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -49,6 +50,3 @@ setup(
     package_data={'pirobot': ['quizzes.json']},
     include_package_data=True,
 )
-
-
-
