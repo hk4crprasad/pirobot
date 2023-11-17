@@ -3,25 +3,48 @@ import re
 import json
 import random
 import os
+import sys
 from pprint import pprint
 from telethon import TelegramClient, events
-from dotenv import load_dotenv
+
+CONFIG_FILE = 'configs.json'
 
 def run_bot():
-    # Load environment variables
-    load_dotenv()
+    if not os.path.exists(CONFIG_FILE):
+        create_config()
+    else:
+        load_config()
 
-    # Telegram API credentials
-    session = os.environ.get('TG_SESSION', 'printer')
-    api_id = os.getenv("API_ID")
-    api_hash = os.getenv("API_HASH")
-    debug_mode = os.getenv("DEBUG_MODE", "").upper() == "TRUE"
+def create_config():
+    print("Welcome to pirobot configuration setup.")
+    api_id = input("Your API_ID: ")
+    api_hash = input("Your API_HASH: ")
+    debug_mode = input("Debug mode (true/false): ").lower()
 
-    # Proxy configuration (if needed)
-    proxy = None
+    config_data = {
+        'API_ID': api_id,
+        'API_HASH': api_hash,
+        'DEBUG_MODE': debug_mode,
+    }
 
+    with open(CONFIG_FILE, 'w') as config_file:
+        json.dump(config_data, config_file, indent=4)
+
+    print("Configuration saved in configs.json. You can now run pirobot -r.")
+
+def load_config():
+    with open(CONFIG_FILE) as config_file:
+        config_data = json.load(config_file)
+
+    api_id = config_data.get('API_ID')
+    api_hash = config_data.get('API_HASH')
+    debug_mode = config_data.get('DEBUG_MODE', '').lower() == 'true'
+
+    start_bot(api_id, api_hash, debug_mode)
+
+def start_bot(api_id, api_hash, debug_mode):
     # Create and start the Telegram client
-    client = TelegramClient(session, api_id, api_hash, proxy=proxy).start()
+    client = TelegramClient('pirobot', api_id, api_hash).start()
 
     # List to track users who have sent messages
     sender_list = []
@@ -101,8 +124,8 @@ def run_bot():
         client.run_until_disconnected()
     except Exception as e:
         print(f"Error: {e}")
-        # Handle any unexpected errors gracefully
     finally:
         # Cleanup or additional actions can be performed here if needed
         pass
+
 
