@@ -3,12 +3,19 @@ import re
 import json
 import random
 import os
-import sys
-from pprint import pprint
 from telethon import TelegramClient, events
+from telethon.errors.rpcbaseerrors import TimedOutError
+from pkg_resources import resource_string
 
 CONFIG_FILE = 'configs.json'
 
+def read_resource(path):
+    return resource_string(__name__, path).decode()
+
+def quizzes():
+    quiz = json.loads(read_resource("quizzes.json"))
+    return quiz
+    
 def run_bot():
     if not os.path.exists(CONFIG_FILE):
         create_config()
@@ -43,28 +50,19 @@ def load_config():
     start_bot(api_id, api_hash, debug_mode)
 
 def start_bot(api_id, api_hash, debug_mode):
-    # Create and start the Telegram client
     client = TelegramClient('pirobot', api_id, api_hash).start()
 
-    # List to track users who have sent messages
     sender_list = []
 
-    # Read quizzes from JSON file
-    with open('quizzes.json') as json_file:
-        quizzes = json.load(json_file)
-
-    # Event handler for new messages
     @client.on(events.NewMessage)
     async def handle_new_message(event):
         try:
             me = await client.get_me()
-        except AttributeError:
-            me = None
+            from_user = await event.get_sender()
+        except TimedOutError:
+            print("Timed out while fetching user information. Retrying...")
+            return
 
-        # Get information about the sender
-        from_user = await event.get_sender()
-
-        # Check conditions for auto-reply
         proceed_auto_reply = (
             not getattr(from_user, 'bot', False) if debug_mode else
             not getattr(from_user, 'bot', False) and (
@@ -73,16 +71,13 @@ def start_bot(api_id, api_hash, debug_mode):
         )
 
         if proceed_auto_reply:
-            # If conditions met, prepare and send auto-reply
             if not getattr(from_user, 'bot', False) and event:
-                time.sleep(1)  # Rate-limit automatic replies
-                # print(time.asctime(), '-', event.message)
+                time.sleep(1)
                 user_id = from_user.id
                 username = from_user.username
                 date = event.date.strftime('%a %b %d %H:%M:%S %Y')
                 message_sent_by_sender = event.message.message if event.message.message else ""
 
-                # Print the formatted message
                 print(
                     f"User name :- @{username if username else 'None'}\n"
                     f"#if username = None then\n"
@@ -90,7 +85,7 @@ def start_bot(api_id, api_hash, debug_mode):
                     f"Date :- {date}\n"
                     f"Message :- {message_sent_by_sender}\n"
                 )
-                # Build auto-reply message
+
                 message = ""
                 sender_list.append(from_user.id)
 
@@ -106,26 +101,21 @@ def start_bot(api_id, api_hash, debug_mode):
                 elif sender_list.count(from_user.id) < 4:
                     message = f"**AUTO REPLY**\n\n@{from_user.username}, Please bear with us 😅"
                 else:
-                    # Select a random quiz
-                    random_number = random.randint(0, len(quizzes) - 1)
-                    question = quizzes[random_number]['question']
-                    answer = quizzes[random_number]['answer']
+                    random_number = random.randint(0, len(quizzes()) - 1)
+                    question = quizzes()[random_number]['question']
+                    answer = quizzes()[random_number]['answer']
                     message = (
-                        f"**AUTO REPLY**\n\n@{from_user.username}, How about playing a guessing game? 😁\n"
-                        f"{question}\n{answer}\n"
+                        f"**AUTO REPLY**\n\n@{from_user.username}, How about playing a guessing game? 😁\n\n"
+                        f"{question}\n\n{answer}\n\n"
                     )
 
                 if message:
                     await event.reply(message)
 
-    # Start and run the Telegram client
     client.start()
     try:
         client.run_until_disconnected()
     except Exception as e:
         print(f"Error: {e}")
     finally:
-        # Cleanup or additional actions can be performed here if needed
         pass
-
-
