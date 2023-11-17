@@ -7,4 +7,6 @@ include LICENSE
 # Include the data files
 recursive-include pirobot *
 
+include pirobot/*
+
 prune __pycache__
