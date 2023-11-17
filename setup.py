@@ -1,3 +1,4 @@
+# setup.py
 from setuptools import setup, find_packages
 
 with open('README.md', 'r', encoding='utf-8') as readme_file:
@@ -5,11 +6,13 @@ with open('README.md', 'r', encoding='utf-8') as readme_file:
 
 setup(
     name='pirobot',
-    version='1.3.0',
+    version='1.5.0',
     packages=find_packages(),
     install_requires=[
         'telethon',
-        'requests',
+        'python-dotenv',
+        'python-telegram-bot',
+        'requests'
     ],
     entry_points={
         'console_scripts': [
@@ -17,11 +20,12 @@ setup(
         ],
     },
     author='HK4CRPRASAD',
+    author_email='hotahara12@gmail.com',
     description='Telegram Bot Script with Flood Control Functionality',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/hk4crprasad/pirobot',
-    license='MIT',
+    license='GPL',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -38,5 +42,7 @@ setup(
         # Add more classifiers as needed
     ],
     python_requires='>=3.6',
+    package_data={'pirobot': ['quizzes.json']},
+    include_package_data=True,
 )
 
