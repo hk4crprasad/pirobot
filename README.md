@@ -49,7 +49,6 @@ pip install pirobot
 
 ## Stay Connected
 
-- 📣 Follow on [Twitter](https://twitter.com/hk4crprasad) for updates.
 - 💬 Join the discussion on [Telegram](https://t.me/hk4crprasad).
 
 ## License
