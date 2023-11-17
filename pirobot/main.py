@@ -20,3 +20,4 @@ if __name__ == "__main__":
             print("Invalid argument. Use --piro/-piro for help or -r/--run to run the bot.")
     else:
         print("Invalid arguments. Use --piro/-piro for help or -r/--run to run the bot.")
+
