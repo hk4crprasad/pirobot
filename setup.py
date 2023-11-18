@@ -18,7 +18,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pirobot = pirobot.main:run_bot',
+            'pirobot = pirobot.main:main',
         ],
     },
     author='HK4CRPRASAD',
