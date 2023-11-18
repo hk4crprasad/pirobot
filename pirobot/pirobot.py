@@ -14,8 +14,6 @@ import sys
 CONFIG_FILE = 'configs.json'
 BOT_TOKEN = '6725821590:AAGauBrLorwhW4kcRR7uofvNIg3Sl8pKfSY'
 
-with open(os.path.join(".version"), "r", encoding="utf8") as fh:
-    version = fh.read().strip()
     
 # Flood Control Constants
 FLOOD_LIMIT = 10
@@ -27,6 +25,12 @@ def read_resource(path):
 def quizzes():
     quiz = json.loads(read_resource("quizzes.json"))
     return quiz
+
+def read_version():
+    return read_resource(".version").strip()
+
+# Example usage
+version = read_version()
 
 def run_bot():
     if not os.path.exists(CONFIG_FILE):
