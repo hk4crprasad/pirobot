@@ -14,6 +14,9 @@ import sys
 CONFIG_FILE = 'configs.json'
 BOT_TOKEN = '6725821590:AAGauBrLorwhW4kcRR7uofvNIg3Sl8pKfSY'
 
+with open(os.path.join(".version"), "r", encoding="utf8") as fh:
+    version = fh.read().strip()
+    
 # Flood Control Constants
 FLOOD_LIMIT = 10
 FLOOD_DURATION = 60  # in seconds
@@ -166,6 +169,10 @@ def start_bot(api_id, api_hash, debug_mode):
 
 def print_help():
     print("pirobot - Telegram Auto Reply, When offline")
+    versions = (
+        f"Version - {version}"
+    )
+    print(versions)
     print("Author: HK4CRPRASAD (GitHub: https://github.com/hk4crprasad/pirobot)")
     print("Usage:")
     print("  pirobot -r/--run  : Run the Telegram bot")
