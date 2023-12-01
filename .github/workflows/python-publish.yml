@@ -3,7 +3,7 @@ name: Piroattack Testing
 on:
   push:
     branches:
-      - pypi
+      - master
 
 jobs:
   test:
