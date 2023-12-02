@@ -24,4 +24,4 @@ jobs:
 
     - name: Run piroattack
       run: |
-        piroattack https://9987up.vip -m ramdom -w 1024
+        piroattack https://9987up.vip -m random -w 1024
